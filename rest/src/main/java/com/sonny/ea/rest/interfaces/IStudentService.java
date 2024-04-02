@@ -10,4 +10,9 @@ public interface IStudentService {
     public List<Course> getCoursesByStudentId(int studentId);
 
     public void addCourse(int studentId, int courseId);
+    public Student getStudentById(int studentId);
+    public void addStudent(Student student);
+    public void updateStudent(int studentId, Student student);
+    public Student deleteStudent(int studentId);
+    public List<Student> getAllStudents();
 }

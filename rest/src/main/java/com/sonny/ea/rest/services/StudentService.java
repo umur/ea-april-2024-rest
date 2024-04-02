@@ -32,4 +32,24 @@ public class StudentService implements IStudentService {
         student.addCourse(course);
         studentRepository.save(student);
     }
+
+    public List<Student> getAllStudents() {
+        return studentRepository.getAll();
+    }
+
+    public Student getStudentById(int studentId) {
+        return studentRepository.getStudent(studentId);
+    }
+
+    public void addStudent(Student student) {
+        studentRepository.save(student);
+    }
+
+    public void updateStudent(int studentId, Student student) {
+        studentRepository.updateStudent(studentId,student);
+    }
+
+    public Student deleteStudent(int studentId) {
+        return studentRepository.deleteStudent(studentId);
+    }
 }

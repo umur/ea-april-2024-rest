@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 public class StudentRepository {
     private List<Student> students = new ArrayList<>();
 
+    public List<Student> getAll() {
+        return students;
+    }
     public Student getStudent(int studentId) {
         return students.stream()
                 .filter(student -> student.getId() == studentId)
@@ -40,5 +43,21 @@ public class StudentRepository {
                 .findFirst()
                 .map(Student::getCoursesTaken)
                 .orElseThrow(() -> new IllegalArgumentException("Student not found with ID: " + studentId)));
+    }
+
+    public void updateStudent(int studentId, Student student) {
+        Student exist = getStudent(studentId);
+        if (exist != null) {
+            int index = students.indexOf(exist);
+            students.set(index, student);
+        }
+    }
+
+    public Student deleteStudent(int studentId) {
+        Student exist = getStudent(studentId);
+        if (exist != null) {
+            students.remove(exist);
+        }
+        return exist;
     }
 }
