@@ -1,0 +1,67 @@
+### Create a new course
+POST http://localhost:8088/api/courses
+Content-Type: application/json
+
+{
+  "name": "Introduction to Computer Science",
+  "code": "CS101"
+}
+
+### Get all courses
+GET http://localhost:8088/api/courses
+
+### Get course by ID
+GET http://localhost:8088/api/courses/1
+
+### Update a course
+PUT http://localhost:8088/api/courses/1
+Content-Type: application/json
+
+{
+  "name": "Introduction to Computer Science - Updated",
+  "code": "CS101U"
+}
+
+### Delete a course
+DELETE http://localhost:8088/api/courses/1
+
+### Create a new student
+POST http://localhost:8088/api/students
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "major": "Computer Science",
+  "gpa": 3.8,
+  "coursesTaken": []
+}
+
+### Get all students
+GET http://localhost:8088/api/students
+
+### Get student by ID
+GET http://localhost:8088/api/students/1
+
+### Update a student
+PUT http://localhost:8088/api/students/1
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "major": "Computer Science",
+  "gpa": 4.0,
+  "coursesTaken": []
+}
+
+### Delete a student
+DELETE http://localhost:8088/api/students/1
+
+### Get courses by student ID
+GET http://localhost:8088/api/students/1/courses
+
+### Get students by major
+GET http://localhost:8088/api/students/by-major?major=Computer%20Science
