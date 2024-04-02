@@ -32,4 +32,20 @@ public class CourseRepository {
             courses.add(course);
         }
     }
+
+    public void updateCourse(int courseId, Course course) {
+        Course exist = getCourse(courseId);
+        if (exist != null) {
+            int index = courses.indexOf(exist);
+            courses.set(index, course);
+        }
+    }
+
+    public Course deleteCourse(int courseId) {
+        Course exist = getCourse(courseId);
+        if (exist != null) {
+            courses.remove(exist);
+        }
+        return exist;
+    }
 }

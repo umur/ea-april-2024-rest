@@ -9,4 +9,6 @@ public interface ICourseService {
     public void saveCourse(Course course);
 
     public List<Course> getCourses();
+    public void updateCourse(int courseId, Course course);
+    public Course deleteCourse(int courseId);
 }
