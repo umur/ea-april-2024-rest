@@ -13,11 +13,13 @@ import java.util.List;
 public class CourseRepository {
     private List<Course> courseList = new ArrayList<>();
 
-
+    private int id = 0;
 
 
     public void saveCourse(Course course){
+        course.setId(++id);
         courseList.add(course);
+
     }
 
     public List<Course> getAllCourses(){
