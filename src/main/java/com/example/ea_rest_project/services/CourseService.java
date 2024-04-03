@@ -1,6 +1,7 @@
 package com.example.ea_rest_project.services;
 
 import com.example.ea_rest_project.domain.Course;
+import com.example.ea_rest_project.dto.CourseRequest;
 import com.example.ea_rest_project.repositories.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,11 +30,13 @@ public class CourseService {
 
     }
 
-    public void updateCourse(Course course) {
-        if (course != null) {
-            courseRepository.updateCourse(course);
-        }
-        throw new NullPointerException("Course is null");
+    public void updateCourse(int id, CourseRequest courseRequest) {
+        Course course = courseRepository.getCourseById(id);
+
+        course.setName(courseRequest.getName());
+        course.setCode(courseRequest.getCode());
+
+        courseRepository.updateCourse(course);
     }
 
     public void deleteCourse(int id){

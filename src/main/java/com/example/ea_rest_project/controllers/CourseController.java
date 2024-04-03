@@ -1,6 +1,8 @@
 package com.example.ea_rest_project.controllers;
 
 import com.example.ea_rest_project.domain.Course;
+
+import com.example.ea_rest_project.dto.CourseRequest;
 import com.example.ea_rest_project.services.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,9 +33,9 @@ public class CourseController {
         return "Course saved successfully";
     }
 
-    @PutMapping
-    public String updateCourse(@RequestBody Course course) {
-        courseService.updateCourse(course);
+    @PutMapping("/{id}")
+    public String updateCourse(@PathVariable int id, @RequestBody CourseRequest courseRequest) {
+        courseService.updateCourse(id, courseRequest);
         return "Course updated successfully";
     }
 
