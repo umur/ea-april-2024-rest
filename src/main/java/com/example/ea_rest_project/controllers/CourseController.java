@@ -21,7 +21,7 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public Course getCourseById(@PathVariable String id) {
+    public Course getCourseById(@PathVariable int id) {
         return courseService.getCourseById(id);
     }
 
@@ -37,9 +37,9 @@ public class CourseController {
         return "Course updated successfully";
     }
 
-    @DeleteMapping
-    public String deleteCourse(@RequestBody Course course) {
-        courseService.deleteCourse(course);
+    @DeleteMapping("/{id}")
+    public String deleteCourse(@PathVariable int id) {
+        courseService.deleteCourse(id);
         return "Course deleted successfully";
     }
 

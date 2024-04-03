@@ -24,11 +24,9 @@ public class CourseService {
         return courseRepository.getAllCourses();
     }
 
-    public Course getCourseById(String id){
-        if(id != null){
-            return courseRepository.getCourseById(id);
-        }
-        throw new NullPointerException("Id can not be null");
+    public Course getCourseById(int id){
+        return courseRepository.getCourseById(id);
+
     }
 
     public void updateCourse(Course course) {
@@ -38,12 +36,11 @@ public class CourseService {
         throw new NullPointerException("Course is null");
     }
 
-    public void deleteCourse(Course course){
-        if (course != null) {
-            for(Course c: courseRepository.getCourseList()){
-                if(c.getId().equals(course.getId())){
-                    courseRepository.deleteCourse(c);
-                }
+    public void deleteCourse(int id){
+        for(Course c: courseRepository.getCourseList()){
+            if(c.getId() == id ){
+                courseRepository.deleteCourse(c);
+                return;
             }
         }
         throw new NullPointerException("Course is null");

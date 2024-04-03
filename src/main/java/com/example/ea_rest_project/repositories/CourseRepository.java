@@ -14,6 +14,8 @@ public class CourseRepository {
     private List<Course> courseList = new ArrayList<>();
 
 
+
+
     public void saveCourse(Course course){
         courseList.add(course);
     }
@@ -22,7 +24,7 @@ public class CourseRepository {
         return courseList;
     }
 
-    public Course getCourseById(String id){
+    public Course getCourseById(int id){
        return courseList.stream()
                 .filter(c -> c.getId() == id)
                 .findFirst().get();
@@ -30,7 +32,7 @@ public class CourseRepository {
 
     public void updateCourse(Course course){
         for(Course c: courseList){
-            if(c.getId().equals(course.getId())){
+            if(c.getId() == course.getId()){
                 c.setId(course.getId());
                 c.setName(course.getName());
                 c.setCode(course.getCode());
