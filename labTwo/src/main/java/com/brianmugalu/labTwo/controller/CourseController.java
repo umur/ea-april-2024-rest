@@ -1,2 +1,4 @@
-package com.brianmugalu.labTwo.controller;public class Controller {
+package com.brianmugalu.labTwo.controller;
+
+public class CourseController {
 }

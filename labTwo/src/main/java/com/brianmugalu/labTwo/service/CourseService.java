@@ -1,2 +1,4 @@
-package com.brianmugalu.labTwo.service;public class Service {
+package com.brianmugalu.labTwo.service;
+
+public class CourseService {
 }
