@@ -1,6 +1,5 @@
 package edu.miu.rest.Entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +16,5 @@ public class Student {
     private String major;
     private double gpa;
     private List<Course> coursesTaken;
-
 
 }
