@@ -19,7 +19,7 @@ public class StudentRepository {
         return studentList;
     }
 
-    public Student getStudentById(String id){
+    public Student getStudentById(int id){
         return studentList.stream()
                 .filter(s -> s.getId() == id)
                 .findFirst().get();
@@ -27,7 +27,7 @@ public class StudentRepository {
 
     public void updateStudent(Student student){
         for(Student s: studentList){
-            if(s.getId().equals(student.getId())){
+            if(s.getId() == student.getId()){
                 s.setId(student.getId());
                 s.setFirstName(student.getFirstName());
                 s.setLastName(student.getLastName());
@@ -41,9 +41,28 @@ public class StudentRepository {
 
     public void deleteStudent(Student student){
         for(Student s: studentList){
-            if(s.getId().equals(student.getId())){
+            if(s.getId() == student.getId()){
                 studentList.remove(student);
             }
         }
+    }
+
+    public List<Student> getStudentsByMajor(String major){
+        List<Student> listOfStudentsByMajor = new ArrayList<>();
+        for(Student s: studentList){
+            if(s.getMajor().equals(major)){
+                listOfStudentsByMajor.add(s);
+            }
+        }
+        return listOfStudentsByMajor;
+    }
+
+    public List<Course> getCoursesByStudentId(int studentId) {
+        for (Student s : studentList) {
+            if (s.getId() == studentId) {
+                return s.getCoursesTaken();
+            }
+        }
+        return null;
     }
 }
