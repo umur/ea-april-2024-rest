@@ -32,11 +32,9 @@ public class CourseService {
 
     public void updateCourse(int id, CourseRequest courseRequest) {
         Course course = courseRepository.getCourseById(id);
-
         course.setName(courseRequest.getName());
         course.setCode(courseRequest.getCode());
-
-        courseRepository.updateCourse(course);
+        courseRepository.saveCourse(course);
     }
 
     public void deleteCourse(int id){

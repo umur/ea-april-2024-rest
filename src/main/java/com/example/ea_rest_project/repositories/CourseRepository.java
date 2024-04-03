@@ -17,8 +17,20 @@ public class CourseRepository {
 
 
     public void saveCourse(Course course){
-        course.setId(++id);
-        courseList.add(course);
+        if(course.getId() == null){
+            course.setId(++id);
+            courseList.add(course);
+            return;
+        }
+
+        for(Course c: courseList){
+            if(c.getId().equals(course.getId())){
+                c.setName(course.getName());
+                c.setCode(course.getCode());
+                return;
+            }
+
+        }
 
     }
 
@@ -32,15 +44,15 @@ public class CourseRepository {
                 .findFirst().get();
     }
 
-    public void updateCourse(Course course){
-        for(Course c: courseList){
-            if(c.getId() == course.getId()){
-                c.setId(course.getId());
-                c.setName(course.getName());
-                c.setCode(course.getCode());
-            }
-        }
-    }
+//    public void updateCourse(Course course){
+//        for(Course c: courseList){
+//            if(c.getId() == course.getId()){
+//                c.setId(course.getId());
+//                c.setName(course.getName());
+//                c.setCode(course.getCode());
+//            }
+//        }
+//    }
 
     public void deleteCourse(Course course){
         courseList.remove(course);
