@@ -12,11 +12,16 @@ import java.util.List;
 @RequestMapping("/students")
 @RequiredArgsConstructor
 public class StudentController {
-        private final StudentService studentService;
+    private final StudentService studentService;
 
     @GetMapping
     public List<Student> getStudents(){
        return studentService.getStudents();
+    }
+
+    @GetMapping("/{id}")
+    public Student getStudent(@PathVariable long id){
+        return studentService.getStudent(id);
     }
 
     @PostMapping
@@ -39,7 +44,7 @@ public class StudentController {
         return studentService.getStudentsByMajor(major);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/courses/{id}")
     public List<Course> getCoursesByStudentId(@PathVariable long id){
         return studentService.getCoursesByStudentId(id);
     }

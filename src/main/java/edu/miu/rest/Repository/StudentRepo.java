@@ -21,6 +21,10 @@ public class StudentRepo {
         return this.students;
     }
 
+    public Student getStudent(long id){
+        return students.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
+    }
+
     public void updateStudent(long id, Student student) {
         students.stream()
                 .filter(std -> std.getId() == id)
