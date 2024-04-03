@@ -37,12 +37,10 @@ public class StudentService {
         throw new NullPointerException("Student is null");
     }
 
-    public void deleteStudent(Student student){
-        if(student != null){
-            for(Student s: studentRepository.getStudentList()){
-                if(s.getId() == student.getId()){
-                    studentRepository.deleteStudent(student);
-                }
+    public void deleteStudent(int id){
+        for(Student s: studentRepository.getStudentList()){
+            if(s.getId() == id){
+                studentRepository.deleteStudent(s);
             }
         }
         throw new NullPointerException("Student is null");
