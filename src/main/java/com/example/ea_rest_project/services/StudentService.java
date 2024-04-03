@@ -3,14 +3,16 @@ package com.example.ea_rest_project.services;
 import com.example.ea_rest_project.domain.Course;
 import com.example.ea_rest_project.domain.Student;
 import com.example.ea_rest_project.repositories.StudentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StudentService {
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     public void saveStudent(Student student) {
         if (student != null) {

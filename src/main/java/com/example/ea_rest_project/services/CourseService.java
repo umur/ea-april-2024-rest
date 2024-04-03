@@ -2,13 +2,15 @@ package com.example.ea_rest_project.services;
 
 import com.example.ea_rest_project.domain.Course;
 import com.example.ea_rest_project.repositories.CourseRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CourseService {
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     public void saveCourse(Course course){
         if(course != null){
