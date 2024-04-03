@@ -24,6 +24,10 @@ public class StudentService {
         return studentRepo.getStudents();
     }
 
+    public Student getStudent(long id){
+        return studentRepo.getStudent(id);
+    }
+
     public void updateStudents(long id, Student student){
         studentRepo.updateStudent(id, student);
 

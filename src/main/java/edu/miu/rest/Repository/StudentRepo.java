@@ -2,16 +2,19 @@ package edu.miu.rest.Repository;
 
 import edu.miu.rest.Entity.Course;
 import edu.miu.rest.Entity.Student;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Repository
 public class StudentRepo {
 
     List<Student> students = new ArrayList<Student>();
+    private final CourseRepo courseRepo;
 
     public void addStudent(Student student) {
         students.add(student);
@@ -19,6 +22,10 @@ public class StudentRepo {
 
     public List<Student> getStudents() {
         return this.students;
+    }
+
+    public Student getStudent(long id){
+        return students.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
     }
 
     public void updateStudent(long id, Student student) {
@@ -51,7 +58,7 @@ public class StudentRepo {
                 .filter(std -> std.getId() == id)
                 .map(Student::getCoursesTaken)
                 .flatMap(List::stream)
+               .map(courseId -> courseRepo.getCourse(courseId))
                 .collect(Collectors.toList());
-
     }
 }

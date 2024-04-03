@@ -1,5 +1,6 @@
 package edu.miu.rest.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-
+@AllArgsConstructor
 public class Student {
     private long id;
     private String firstName;
@@ -15,6 +16,5 @@ public class Student {
     private String email;
     private String major;
     private double gpa;
-    private List<Course> coursesTaken;
-
+    private List<Long> coursesTaken;
 }
