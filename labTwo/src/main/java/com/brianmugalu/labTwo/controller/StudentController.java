@@ -27,6 +27,11 @@ public class StudentController {
         return studentService.getStudentsByMajor(major);
     }
 
+    @PutMapping("update/{id}")
+    public Student updateMajor(@PathVariable int id, @RequestBody String major){
+        return studentService.updateMajor(id,major);
+    }
+
     @GetMapping("courses/{id}")
     public List<Course> getCoursesByStudentId(@PathVariable int id){
         return studentService.getCoursesByStudentId(id);

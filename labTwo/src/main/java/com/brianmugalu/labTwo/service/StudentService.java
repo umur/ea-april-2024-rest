@@ -34,4 +34,9 @@ public class StudentService {
         studentRepository.addCourses(id, courses);
         return "Courses successfully Added";
     }
+
+    public Student updateMajor(int id, String major) {
+
+        return  studentRepository.updateMajor(id,major);
+    }
 }

@@ -1,5 +1,6 @@
 package com.brianmugalu.labTwo.repository.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,3 +23,4 @@ public class Student {
         this.coursesTaken=coursesTaken;
     }
 }
+

@@ -40,6 +40,19 @@ public class StudentRepository {
                 .filter(student -> student.getId() == id)
                 .forEach(student -> student.setCoursesTaken(courses));
     }
+
+    public Student updateMajor(int id, String major) {
+        return studentList.stream()
+                .filter(student -> student.getId() == id)
+                .peek(student -> {
+                    student.setMajor(major);
+                    System.out.println(student);
+                })
+                .findFirst()
+                .orElse(null); // Return null if no student is found with the given ID
+    }
+
+
 }
 
 
