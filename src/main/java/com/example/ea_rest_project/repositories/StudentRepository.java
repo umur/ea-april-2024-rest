@@ -2,14 +2,16 @@ package com.example.ea_rest_project.repositories;
 
 import com.example.ea_rest_project.domain.Course;
 import com.example.ea_rest_project.domain.Student;
+import lombok.Data;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Data
 public class StudentRepository {
-    private static List<Student> studentList = new ArrayList<>();
+    private List<Student> studentList = new ArrayList<>();
 
 
 
@@ -42,29 +44,8 @@ public class StudentRepository {
     }
 
     public void deleteStudent(Student student){
-        for(Student s: studentList){
-            if(s.getId() == student.getId()){
-                studentList.remove(student);
-            }
-        }
+        studentList.remove(student);
     }
 
-    public List<Student> getStudentsByMajor(String major){
-        List<Student> listOfStudentsByMajor = new ArrayList<>();
-        for(Student s: studentList){
-            if(s.getMajor().equals(major)){
-                listOfStudentsByMajor.add(s);
-            }
-        }
-        return listOfStudentsByMajor;
-    }
 
-    public List<Course> getCoursesByStudentId(int studentId) {
-        for (Student s : studentList) {
-            if (s.getId() == studentId) {
-                return s.getCoursesTaken();
-            }
-        }
-        return null;
-    }
 }
