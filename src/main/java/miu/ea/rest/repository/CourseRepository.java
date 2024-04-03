@@ -95,9 +95,10 @@ public class CourseRepository {
         students.add(student3);
     }
 
-    public Course create(Course course) {
+    public Boolean create(Course course) {
+        int initialSize = courses.size();
         courses.add(course);
-        return course;
+        return courses.size() > initialSize;
     }
 
     public Course getCourseById(Long id) {

@@ -89,9 +89,10 @@ public class StudentRepository {
         students.add(student3);
     }
 
-    public Student create(Student student) {
+    public Boolean create(Student student) {
+        int initialSize = students.size();
         students.add(student);
-        return student;
+        return students.size() > initialSize;
     }
 
     public Student getStudentById(Long id) {

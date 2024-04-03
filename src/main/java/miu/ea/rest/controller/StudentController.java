@@ -18,8 +18,12 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping
-    public Student create(@RequestBody Student student) {
-        return studentService.create(student);
+    public ResponseEntity<Student> create(@RequestBody Student student) {
+        if (studentService.create(student)) {
+            return new ResponseEntity<>(student, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(student, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping

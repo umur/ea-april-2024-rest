@@ -12,7 +12,7 @@ import java.util.List;
 public class CourseService {
     private final CourseRepository courseRepository;
 
-    public Course create(Course course) {
+    public Boolean create(Course course) {
         return courseRepository.create(course);
     }
 

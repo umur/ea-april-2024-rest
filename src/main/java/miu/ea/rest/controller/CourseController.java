@@ -17,8 +17,12 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping
-    public Course create(@RequestBody Course course) {
-        return courseService.create(course);
+    public ResponseEntity<Course> create(@RequestBody Course course) {
+        if (courseService.create(course)) {
+            return new ResponseEntity<>(course, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(course, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping

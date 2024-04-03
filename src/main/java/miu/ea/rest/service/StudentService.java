@@ -13,7 +13,7 @@ import java.util.List;
 public class StudentService {
     private final StudentRepository studentRepository;
 
-    public Student create(Student student) {
+    public Boolean create(Student student) {
         return studentRepository.create(student);
     }
 
