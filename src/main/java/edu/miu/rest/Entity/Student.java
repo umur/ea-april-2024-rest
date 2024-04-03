@@ -1,5 +1,6 @@
 package edu.miu.rest.Entity;
 
+<<<<<<< HEAD
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,4 +20,7 @@ public class Student {
     private List<Course> coursesTaken;
 
 
+=======
+public class Student {
+>>>>>>> 4cc4a2a (courses basic endpoints added)
 }
