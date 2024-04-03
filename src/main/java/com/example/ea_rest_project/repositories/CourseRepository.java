@@ -1,6 +1,7 @@
 package com.example.ea_rest_project.repositories;
 
 import com.example.ea_rest_project.domain.Course;
+import lombok.Data;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,8 +9,9 @@ import java.util.List;
 
 
 @Repository
+@Data
 public class CourseRepository {
-    private static List<Course> courseList = new ArrayList<>();
+    private List<Course> courseList = new ArrayList<>();
 
 
     public void saveCourse(Course course){
@@ -20,9 +22,9 @@ public class CourseRepository {
         return courseList;
     }
 
-    public Course getCourseByCode(String code){
+    public Course getCourseById(String id){
        return courseList.stream()
-                .filter(c -> c.getCode() == code)
+                .filter(c -> c.getId() == id)
                 .findFirst().get();
     }
 
@@ -37,10 +39,6 @@ public class CourseRepository {
     }
 
     public void deleteCourse(Course course){
-        for(Course c: courseList){
-            if(c.getId().equals(course.getId())){
-                courseList.remove(course);
-            }
-        }
+        courseList.remove(course);
     }
 }

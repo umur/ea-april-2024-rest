@@ -2,10 +2,12 @@ package com.example.ea_rest_project.repositories;
 
 import com.example.ea_rest_project.domain.Course;
 import com.example.ea_rest_project.domain.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class StudentRepository {
     private static List<Student> studentList = new ArrayList<>();
 
