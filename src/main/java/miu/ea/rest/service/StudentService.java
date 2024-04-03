@@ -1,7 +1,7 @@
 package miu.ea.rest.service;
 
+import lombok.RequiredArgsConstructor;
 import miu.ea.rest.entity.Course;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import miu.ea.rest.entity.Student;
 import miu.ea.rest.repository.StudentRepository;
@@ -9,10 +9,9 @@ import miu.ea.rest.repository.StudentRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StudentService {
-
-    @Autowired
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     public Student create(Student student) {
         return studentRepository.create(student);

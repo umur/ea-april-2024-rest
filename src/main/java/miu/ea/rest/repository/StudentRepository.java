@@ -46,7 +46,6 @@ public class StudentRepository {
         course6.setName("Web Application Programming");
         course6.setCode("CS472");
 
-
         List<Course> courses1 = new ArrayList<>();
         courses1.add(course1);
         courses1.add(course2);
@@ -130,7 +129,7 @@ public class StudentRepository {
 
     public List<Course> getCoursesByStudentId(Long studentId) {
         Student student = students.stream()
-                .filter(s -> s.getId() == studentId)
+                .filter(s -> s.getId().equals(studentId))
                 .findFirst()
                 .orElse(null);
 
