@@ -1,0 +1,49 @@
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+  "firstName": "Janet",
+  "lastName": "Isak",
+  "email": "jjjkk" ,
+  "major": "CS",
+  "gpa": 3.0,
+  "courseTaken": [
+    {"name": "WAA",
+    "code": "CS-500"},
+    {"name": "EA",
+      "code": "CS-545"}
+
+  ]
+}
+
+###
+
+GET http://localhost:8080/students
+
+###
+
+GET http://localhost:8080/students/2
+
+###
+
+PUT http://localhost:8080/students/1
+Content-Type: application/json
+
+{
+  "firstName": "Sami",
+  "lastName": "Isak",
+  "email": "jjjkk" ,
+  "major": "CS",
+  "gpa": 4.0,
+  "courseTaken": [
+    {"name": "SA",
+      "code": "CS-500"},
+    {"name": "EA",
+      "code": "CS-545"}
+
+  ]
+}
+
+###
+
+DELETE http://localhost:8080/students/2

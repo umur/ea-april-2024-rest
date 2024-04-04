@@ -1,0 +1,29 @@
+POST http://localhost:8080/courses
+Content-Type: application/json
+
+{
+   "name": "EA",
+   "code": "CS-545"
+}
+
+###
+
+GET http://localhost:8080/courses
+
+###
+
+GET http://localhost:8080/courses/2
+
+###
+
+DELETE http://localhost:8080/courses/1
+
+###
+
+PUT http://localhost:8080/courses/1
+Content-Type: application/json
+
+{
+  "name":"WAA",
+  "code":  "CS-500"
+}
