@@ -2,6 +2,7 @@ package com.example.ea_rest_project.services;
 
 import com.example.ea_rest_project.domain.Course;
 import com.example.ea_rest_project.domain.Student;
+import com.example.ea_rest_project.dto.StudentRequest;
 import com.example.ea_rest_project.repositories.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,17 +31,23 @@ public class StudentService {
         return studentRepository.getStudentById(id);
     }
 
-    public void updateStudent(Student student){
-        if(student != null){
-            studentRepository.updateStudent(student);
-        }
-        throw new NullPointerException("Student is null");
+    public void updateStudent(Integer id, StudentRequest studentRequest){
+        Student student = studentRepository.getStudentById(id);
+        student.setFirstName(studentRequest.getFirstName());
+        student.setLastName(studentRequest.getLastName());
+        student.setEmail(studentRequest.getEmail());
+        student.setMajor(studentRequest.getMajor());
+        student.setGpa(studentRequest.getGpa());
+        student.setCoursesTaken(studentRequest.getCoursesTaken());
+
+        studentRepository.saveStudent(student);
     }
 
-    public void deleteStudent(int id){
+    public void deleteStudent(Integer id){
         for(Student s: studentRepository.getStudentList()){
-            if(s.getId() == id){
+            if(s.getId().equals(id)){
                 studentRepository.deleteStudent(s);
+                return;
             }
         }
         throw new NullPointerException("Student is null");

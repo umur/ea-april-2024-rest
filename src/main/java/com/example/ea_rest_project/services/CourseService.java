@@ -37,9 +37,9 @@ public class CourseService {
         courseRepository.saveCourse(course);
     }
 
-    public void deleteCourse(int id){
+    public void deleteCourse(Integer id){
         for(Course c: courseRepository.getCourseList()){
-            if(c.getId() == id ){
+            if(c.getId().equals(id) ){
                 courseRepository.deleteCourse(c);
                 return;
             }

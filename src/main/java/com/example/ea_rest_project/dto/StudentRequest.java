@@ -1,18 +1,12 @@
-package com.example.ea_rest_project.domain;
+package com.example.ea_rest_project.dto;
 
-
-import lombok.AllArgsConstructor;
+import com.example.ea_rest_project.domain.Course;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 import java.util.List;
 
-
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Student {
+public class StudentRequest {
     private Integer id;
     private String firstName;
     private String lastName;

@@ -2,22 +2,25 @@ package com.example.ea_rest_project.controllers;
 
 
 import com.example.ea_rest_project.domain.Student;
+import com.example.ea_rest_project.dto.StudentRequest;
 import com.example.ea_rest_project.services.StudentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/{Students}")
+@RequiredArgsConstructor
+@RequestMapping("/students")
 public class StudentController {
 
-    private StudentService studentService;
+    private final StudentService studentService;
 
 
     @PostMapping
     public String saveStudent(@RequestBody Student student){
         studentService.saveStudent(student);
-        return "Student save successfully";
+        return "Student saved successfully";
     }
 
     @GetMapping
@@ -30,14 +33,14 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
-    @PutMapping
-    public String updateStudent(@RequestBody Student student){
-        studentService.updateStudent(student);
+    @PutMapping("/{id}")
+    public String updateStudent(@PathVariable Integer id, @RequestBody StudentRequest studentRequest){
+        studentService.updateStudent(id, studentRequest);
         return "Student updated successfully";
     }
 
     @DeleteMapping("/{id}")
-    public String deleteStudent(@PathVariable int id){
+    public String deleteStudent(@PathVariable Integer id){
         studentService.deleteStudent(id);
         return "Student deleted successfully";
     }

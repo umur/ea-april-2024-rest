@@ -12,40 +12,59 @@ import java.util.List;
 @Data
 public class StudentRepository {
     private List<Student> studentList = new ArrayList<>();
+    private int id;
 
 
-
-    public void saveStudent(Student student){
-        studentList.add(student);
-    }
-
-    public List<Student> getAllStudents(){
-        return studentList;
-    }
-
-    public Student getStudentById(int id){
-        return studentList.stream()
-                .filter(s -> s.getId() == id)
-                .findFirst().get();
-    }
-
-    public void updateStudent(Student student){
+    public void saveStudent(Student student) {
+        if (student.getId() == null) {
+            student.setId(++id);
+            studentList.add(student);
+            return;
+        }
         for(Student s: studentList){
-            if(s.getId() == student.getId()){
-                s.setId(student.getId());
+            if(s.getId().equals(student.getId())){
                 s.setFirstName(student.getFirstName());
                 s.setLastName(student.getLastName());
                 s.setEmail(student.getEmail());
                 s.setMajor(student.getMajor());
                 s.setGpa(student.getGpa());
                 s.setCoursesTaken(student.getCoursesTaken());
+                return;
             }
         }
     }
 
-    public void deleteStudent(Student student){
-        studentList.remove(student);
+
+
+        public List<Student> getAllStudents () {
+            return studentList;
+        }
+
+        public Student getStudentById ( int id){
+            return studentList.stream()
+                    .filter(s -> s.getId() == id)
+                    .findFirst().get();
+        }
+
+
+        public void deleteStudent (Student student){
+            studentList.remove(student);
+        }
+
+//        public void updateStudent (Student student){
+//            for (Student s : studentList) {
+//                if (s.getId() == student.getId()) {
+//                    s.setId(student.getId());
+//                    s.setFirstName(student.getFirstName());
+//                    s.setLastName(student.getLastName());
+//                    s.setEmail(student.getEmail());
+//                    s.setMajor(student.getMajor());
+//                    s.setGpa(student.getGpa());
+//                    s.setCoursesTaken(student.getCoursesTaken());
+//                }
+//            }
+//        }
+
+
     }
 
-
-}
